@@ -3,12 +3,36 @@ import Logo from '@components/common/Logo';
 import TextInput from '@components/common/TextInput';
 import Button from '@components/common/Button';
 import { Wrapper, FormBox, FieldBox, RowBox } from '@styles/SignUp.style';
+import { checkEmail, checkNick } from '@apis/member';
+import { useState } from 'react';
+import useFormInput from '@/hooks/useFormInput';
 
 function SignUp() {
+  const nickname = useFormInput('');
+  const email = useFormInput('');
+  const [isCheckEmail, setIsCheckEmail] = useState(false);
+  const [isCheckNick, setIsCheckNick] = useState(false);
+
   const optionList = [
     { id: 1, kor: '남성', eng: 'MALE' },
     { id: 2, kor: '여성', eng: 'FEMALE' },
   ];
+
+  const isButtonDisabled = !isCheckEmail || !isCheckNick;
+
+  const onClickEmail = async (e) => {
+    e.preventDefault();
+    const { message } = await checkEmail(email.value);
+    alert(message);
+    setIsCheckEmail(true);
+  };
+
+  const onClickNick = async (e) => {
+    e.preventDefault();
+    const { message } = await checkNick(nickname.value);
+    alert(message);
+    setIsCheckNick(true);
+  };
 
   return (
     <Wrapper>
@@ -17,8 +41,10 @@ function SignUp() {
         <FieldBox>
           <label htmlFor="email">이메일</label>
           <RowBox>
-            <TextInput type="email" />
-            <Button $size="small">확인</Button>
+            <TextInput type="email" {...email} />
+            <Button $size="small" onClick={onClickEmail}>
+              확인
+            </Button>
           </RowBox>
         </FieldBox>
         <FieldBox>
@@ -32,8 +58,10 @@ function SignUp() {
         <FieldBox>
           <label htmlFor="nickname">닉네임</label>
           <RowBox>
-            <TextInput type="text" />
-            <Button $size="small">확인</Button>
+            <TextInput type="text" {...nickname} />
+            <Button $size="small" onClick={onClickNick}>
+              확인
+            </Button>
           </RowBox>
         </FieldBox>
         <FieldBox>
@@ -46,7 +74,9 @@ function SignUp() {
             ))}
           </SelectBox>
         </FieldBox>
-        <Button $size="large">가입하기</Button>
+        <Button $size="large" disabled={isButtonDisabled}>
+          가입하기
+        </Button>
       </FormBox>
     </Wrapper>
   );
