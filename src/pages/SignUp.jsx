@@ -8,8 +8,8 @@ import { useState } from 'react';
 import useFormInput from '@/hooks/useFormInput';
 
 function SignUp() {
-  const nickname = useFormInput('');
   const email = useFormInput('');
+  const nick = useFormInput('');
   const [isCheckEmail, setIsCheckEmail] = useState(false);
   const [isCheckNick, setIsCheckNick] = useState(false);
 
@@ -29,7 +29,7 @@ function SignUp() {
 
   const onClickNick = async (e) => {
     e.preventDefault();
-    const { message } = await checkNick(nickname.value);
+    const { message } = await checkNick(nick.value);
     alert(message);
     setIsCheckNick(true);
   };
@@ -42,7 +42,7 @@ function SignUp() {
           <label htmlFor="email">이메일</label>
           <RowBox>
             <TextInput type="email" {...email} />
-            <Button $size="small" onClick={onClickEmail}>
+            <Button width="25%" onClick={onClickEmail}>
               확인
             </Button>
           </RowBox>
@@ -58,8 +58,8 @@ function SignUp() {
         <FieldBox>
           <label htmlFor="nickname">닉네임</label>
           <RowBox>
-            <TextInput type="text" {...nickname} />
-            <Button $size="small" onClick={onClickNick}>
+            <TextInput type="text" {...nick} />
+            <Button width="25%" onClick={onClickNick}>
               확인
             </Button>
           </RowBox>
@@ -74,7 +74,7 @@ function SignUp() {
             ))}
           </SelectBox>
         </FieldBox>
-        <Button $size="large" disabled={isButtonDisabled}>
+        <Button height="3rem" disabled={isButtonDisabled}>
           가입하기
         </Button>
       </FormBox>

@@ -9,7 +9,7 @@ function NotFound() {
         <P>Page Not Found</P>
       </TextBox>
       <ButtonBox>
-        <Button $size="medium">HOME</Button>
+        <Button width="10rem">HOME</Button>
       </ButtonBox>
     </Wrapper>
   );

@@ -17,8 +17,10 @@ function Login() {
           <TextInput type="password" />
         </FieldBox>
         <ButtonBox>
-          <Button>로그인</Button>
-          <Button $color="blue">회원가입</Button>
+          <Button height="3rem">로그인</Button>
+          <Button height="3rem" $color="blue">
+            회원가입
+          </Button>
         </ButtonBox>
       </FormBox>
     </Wrapper>
