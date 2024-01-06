@@ -2,10 +2,10 @@ import { styled } from 'styled-components';
 
 const TextInput = styled.input`
   width: 100%;
-  height: 40px;
-  border-radius: 7px;
+  height: 2.5rem;
+  border-radius: 0.5rem;
   border: 1px solid #bababa;
-  padding: 6px 8px;
+  padding: 0.5rem;
 `;
 
 export default TextInput;

@@ -1,25 +1,25 @@
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding-top: 120px;
+  padding: 8rem 0;
 `;
 
 export const FormBox = styled.form`
-  margin-top: 40px;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 2rem;
 `;
 
 export const FieldBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.5rem;
 `;
 
 export const ButtonBox = styled.div`
-  margin: 20px 0;
+  margin: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.2rem;
 `;
