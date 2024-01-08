@@ -26,7 +26,7 @@ const colors = {
     }
   `,
   grey: css`
-    color: white;
+    color: black;
     background-color: #ececec;
     &:hover {
       background-color: #e5e7eb;
