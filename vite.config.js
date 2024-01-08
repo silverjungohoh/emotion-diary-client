@@ -15,6 +15,8 @@ export default defineConfig({
       '@router': resolve(__dirname, './src/router'),
       '@styles': resolve(__dirname, './src/styles'),
       '@utils': resolve(__dirname, './src/utils'),
+      '@hooks': resolve(__dirname, './src/hooks'),
+      '@constants': resolve(__dirname, './src/constants'),
     },
   },
 });

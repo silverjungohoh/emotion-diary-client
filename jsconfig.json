@@ -9,7 +9,9 @@
       "@apis": ["src/apis/*"],
       "@router": ["src/router/*"],
       "@styles": ["src/styles/*"],
-      "@utils": ["src/utils/*"]
+      "@utils": ["src/utils/*"],
+      "@hooks": ["src/hooks/*"],
+      "@constants": ["src/constants/*"]
     }
   }
 }
