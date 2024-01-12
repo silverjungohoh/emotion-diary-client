@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
-import { LuHome, LuUser2, LuFilePlus } from 'react-icons/lu';
+import { LuHome, LuUser2, LuPenSquare } from 'react-icons/lu';
 import Icon from '@components/common/Icon';
+import { NavLink } from 'react-router-dom';
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -12,11 +13,11 @@ const Wrapper = styled.nav`
   padding: 0.8rem 0.2rem;
   border-top: 1px solid #ececec;
   @media (min-width: 480px) {
-    width: 24.375rem;
+    width: 22.5rem;
   }
 `;
 
-const NavList = styled.ul`
+const NavList = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,16 +26,16 @@ const NavList = styled.ul`
 function BottonNav() {
   return (
     <Wrapper>
-      <NavList>
-        <li>
+      <NavList to="/">
+        <NavLink>
           <Icon icon={<LuHome />} />
-        </li>
-        <li>
+        </NavLink>
+        <NavLink to="/new">
+          <Icon icon={<LuPenSquare />} />
+        </NavLink>
+        <NavLink to="/user">
           <Icon icon={<LuUser2 />} />
-        </li>
-        <li>
-          <Icon icon={<LuFilePlus />} />
-        </li>
+        </NavLink>
       </NavList>
     </Wrapper>
   );
