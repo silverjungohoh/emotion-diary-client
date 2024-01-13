@@ -6,5 +6,10 @@ export const sortList = [
 export const filterList = [
   { id: 1, desc: '모든 감정', value: 'all' },
   { id: 2, desc: '나쁜 감정', value: 'bad' },
-  { id: 2, desc: '좋은 감정', value: 'good' },
+  { id: 3, desc: '좋은 감정', value: 'good' },
+];
+
+export const genderList = [
+  { id: 1, kor: '남성', eng: 'MALE' },
+  { id: 2, kor: '여성', eng: 'FEMALE' },
 ];

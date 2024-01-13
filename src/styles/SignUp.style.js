@@ -22,3 +22,7 @@ export const RowBox = styled.div`
   display: flex;
   gap: 0.5rem;
 `;
+
+export const Span = styled.span`
+  color: #ff4500;
+`;

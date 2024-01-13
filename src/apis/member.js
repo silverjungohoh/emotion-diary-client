@@ -17,3 +17,9 @@ export const login = async (loginForm) => {
   const { data } = await publicApi.post('members/login', loginForm);
   return data;
 };
+
+// 회원가입
+export const signUp = async (signUpForm) => {
+  const { data } = await publicApi.post(`members/sign-up`, signUpForm);
+  return data;
+};
