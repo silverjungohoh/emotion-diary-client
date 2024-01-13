@@ -11,3 +11,9 @@ export const checkNick = async (nickname) => {
   const { data } = await publicApi.get(`members/check/nickname?nickname=${nickname}`);
   return data;
 };
+
+// 로그인
+export const login = async (loginForm) => {
+  const { data } = await publicApi.post('members/login', loginForm);
+  return data;
+};
