@@ -1,9 +1,5 @@
 import { styled } from 'styled-components';
-import Worst from '@assets/worst.png';
-import Bad from '@assets/bad.png';
-import Normal from '@assets/normal.png';
-import Good from '@assets/good.png';
-import Best from '@assets/best.png';
+import { emotions } from '@constants/emotion';
 import EmotionItem from './EmotionItem';
 
 const Wrapper = styled.div`
@@ -12,19 +8,31 @@ const Wrapper = styled.div`
   gap: 0.625rem;
 `;
 
-const list = [
-  { id: 1, desc: 'WORST', image: Worst },
-  { id: 2, desc: 'BAD', image: Bad },
-  { id: 3, desc: 'NORMAL', image: Normal },
-  { id: 4, desc: 'GOOD', image: Good },
-  { id: 5, desc: 'BEST', image: Best },
-];
+const Label = styled.label`
+  & > input:checked + div {
+    border: 2px solid black;
+  }
+`;
 
-function EmotionList() {
+const Input = styled.input`
+  display: none;
+  visibility: hidden;
+`;
+
+function EmotionList({ value, onChange }) {
   return (
     <Wrapper>
-      {list.map((item) => (
-        <EmotionItem item={item} key={item.id} />
+      {emotions.map((item) => (
+        <Label key={item.id}>
+          <Input
+            type="radio"
+            name="emotion"
+            value={item.score}
+            checked={parseInt(value) === item.score}
+            onChange={onChange}
+          />
+          <EmotionItem item={item} />
+        </Label>
       ))}
     </Wrapper>
   );

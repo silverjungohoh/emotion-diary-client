@@ -24,7 +24,7 @@ const Span = styled.span`
 function EmotionItem({ item }) {
   return (
     <Wrapper>
-      <Image src={item.image} key={item.id} alt={item.desc} />
+      <Image src={item.image} alt={item.desc} />
       <Span>{item.desc}</Span>
     </Wrapper>
   );
