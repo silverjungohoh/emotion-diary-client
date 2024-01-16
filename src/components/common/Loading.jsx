@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  min-height: calc(100vh - 10rem);
 `;
 
 const Image = styled.img`

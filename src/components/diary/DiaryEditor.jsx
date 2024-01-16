@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import TextInput from '@components/common/TextInput';
 import TextArea from '@components/common/TextArea';
 import { FieldBox, Label, FormBox } from '@styles/diary/DiaryEditor.style';
@@ -9,6 +10,7 @@ import { writeDiary } from '@apis/diary';
 import useFormInput from '@hooks/useFormInput';
 
 function DiaryEdior() {
+  const navigate = useNavigate();
   const date = useFormInput(getStringDate(new Date()));
   const title = useFormInput('');
   const content = useFormInput('');
@@ -25,6 +27,7 @@ function DiaryEdior() {
     try {
       const data = await writeDiary(diaryForm);
       console.log(data);
+      navigate(`/diary/${data.id}`, { replace: true });
     } catch (error) {
       alert(error.response.data.message);
     }

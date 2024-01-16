@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getDayOfTheWeek } from '@utils/date';
 import { emotions } from '@constants/emotion';
 import {
@@ -11,9 +13,33 @@ import {
   ButtonBox,
 } from '@styles/diary/DiaryDetail.style';
 import Button from '@components/common/Button';
+import Loading from '@components/common/Loading';
+import { getDiaryDetail } from '@apis/diary';
 
-function DiaryDetail({ diaryDetail }) {
-  const { title, content, emotionType, date, isWriter } = diaryDetail;
+function DiaryDetail() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [detail, setDetail] = useState(null);
+
+  useEffect(() => {
+    const getDetail = async (id) => {
+      try {
+        const data = await getDiaryDetail(id);
+        setDetail(data);
+      } catch (error) {
+        alert(error.response.data.message);
+        navigate('/', { replace: true });
+      }
+    };
+
+    getDetail(id);
+  }, [id, navigate]);
+
+  if (!detail) {
+    return <Loading />;
+  }
+
+  const { title, content, emotionType, date, isWriter } = detail;
 
   return (
     <Wrapper>

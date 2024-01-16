@@ -1,13 +1,13 @@
-import Worst from '@assets/worst.png';
-import Bad from '@assets/bad.png';
-import Normal from '@assets/normal.png';
-import Good from '@assets/good.png';
-import Best from '@assets/best.png';
+import Worst from '@assets/emotion/worst.png';
+import Bad from '@assets/emotion/bad.png';
+import Normal from '@assets/emotion/normal.png';
+import Good from '@assets/emotion/good.png';
+import Best from '@assets/emotion/best.png';
 
 export const emotions = [
-  { id: 1, desc: 'WORST', image: Worst },
-  { id: 2, desc: 'BAD', image: Bad },
-  { id: 3, desc: 'NORMAL', image: Normal },
-  { id: 4, desc: 'GOOD', image: Good },
-  { id: 5, desc: 'BEST', image: Best },
+  { id: 1, desc: 'WORST', score: 1, image: Worst },
+  { id: 2, desc: 'BAD', score: 2, image: Bad },
+  { id: 3, desc: 'NORMAL', score: 3, image: Normal },
+  { id: 4, desc: 'GOOD', score: 4, image: Good },
+  { id: 5, desc: 'BEST', score: 5, image: Best },
 ];

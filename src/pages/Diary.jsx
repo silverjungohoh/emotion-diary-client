@@ -1,28 +1,25 @@
+import { useNavigate } from 'react-router-dom';
 import { LuChevronLeft } from 'react-icons/lu';
 import Header from '@components/ui/Header';
 import Button from '@components/common/Button';
 import Icon from '@components/common/Icon';
 import DiaryDetail from '@components/diary/DiaryDetail';
-import { diaryDetail } from '@constants/diaryData';
-import BottonNav from '@components/ui/BottomNav';
-import { Wrapper } from '@styles/Diary.style';
 
 function Diary() {
-  const detail = diaryDetail;
+  const navigate = useNavigate();
 
   return (
-    <Wrapper>
+    <>
       <Header
         text="기록"
         left={
-          <Button width="3rem" $color="grey">
+          <Button width="3rem" $color="grey" onClick={() => navigate(-1)}>
             <Icon icon={<LuChevronLeft />} />
           </Button>
         }
       />
-      <DiaryDetail diaryDetail={detail} />
-      <BottonNav />
-    </Wrapper>
+      <DiaryDetail />
+    </>
   );
 }
 
