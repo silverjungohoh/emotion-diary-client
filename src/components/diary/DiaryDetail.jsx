@@ -14,7 +14,7 @@ import {
 } from '@styles/diary/DiaryDetail.style';
 import Button from '@components/common/Button';
 import Loading from '@components/common/Loading';
-import { getDiaryDetail } from '@apis/diary';
+import { getDiaryDetail, deleteDiary } from '@apis/diary';
 
 function DiaryDetail() {
   const { id } = useParams();
@@ -39,6 +39,19 @@ function DiaryDetail() {
     return <Loading />;
   }
 
+  const onClickDelete = async () => {
+    const isConfirm = confirm('일기를 삭제하시겠습니까?');
+    if (isConfirm) {
+      try {
+        const { message } = await deleteDiary(id);
+        alert(message);
+        navigate(-1, { replace: true });
+      } catch (error) {
+        alert(error.response.data.message);
+      }
+    }
+  };
+
   const { title, content, emotionType, date, isWriter } = detail;
 
   return (
@@ -53,7 +66,9 @@ function DiaryDetail() {
       </TextBox>
       {isWriter && (
         <ButtonBox>
-          <Button $color="grey">삭제하기</Button>
+          <Button type="button" $color="grey" onClick={onClickDelete}>
+            삭제하기
+          </Button>
           <Button>수정하기</Button>
         </ButtonBox>
       )}

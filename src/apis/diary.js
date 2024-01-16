@@ -11,3 +11,9 @@ export const getDiaryDetail = async (diaryId) => {
   const { data } = await privateApi.get(`diaries/${diaryId}`);
   return data;
 };
+
+// 일기 삭제
+export const deleteDiary = async (diaryId) => {
+  const { data } = await privateApi.delete(`diaries/${diaryId}`);
+  return data;
+};
