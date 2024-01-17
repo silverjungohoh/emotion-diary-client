@@ -69,7 +69,9 @@ function DiaryDetail() {
           <Button type="button" $color="grey" onClick={onClickDelete}>
             삭제하기
           </Button>
-          <Button>수정하기</Button>
+          <Button type="button" onClick={() => navigate(`/edit/${id}`)}>
+            수정하기
+          </Button>
         </ButtonBox>
       )}
     </Wrapper>

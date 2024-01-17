@@ -17,3 +17,9 @@ export const deleteDiary = async (diaryId) => {
   const { data } = await privateApi.delete(`diaries/${diaryId}`);
   return data;
 };
+
+// 일기 수정
+export const updateDiary = async (diaryForm, diaryId) => {
+  const { data } = await privateApi.patch(`diaries/${diaryId}`, diaryForm);
+  return data;
+};

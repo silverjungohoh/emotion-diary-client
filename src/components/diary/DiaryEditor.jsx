@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import TextInput from '@components/common/TextInput';
 import TextArea from '@components/common/TextArea';
 import { FieldBox, Label, FormBox } from '@styles/diary/DiaryEditor.style';
@@ -6,15 +6,23 @@ import { DateInput } from '@components/common/DateInput';
 import EmotionList from '@components/diary/EmotionList';
 import Button from '@components/common/Button';
 import { getStringDate } from '@utils/date';
-import { writeDiary } from '@apis/diary';
+import { writeDiary, updateDiary } from '@apis/diary';
 import useFormInput from '@hooks/useFormInput';
+import { emotions } from '@constants/emotion';
 
-function DiaryEdior() {
+function DiaryEdior({ isEdit, origin }) {
+  const initialDate = isEdit ? origin.date : getStringDate(new Date());
+  const initialTitle = isEdit ? origin.title : '';
+  const initialContent = isEdit ? origin.content : '';
+  const initialEmotion = isEdit ? emotions.find((it) => it.desc === origin.emotionType).score : 3;
+
   const navigate = useNavigate();
-  const date = useFormInput(getStringDate(new Date()));
-  const title = useFormInput('');
-  const content = useFormInput('');
-  const emotion = useFormInput(3);
+  const { id } = useParams();
+
+  const date = useFormInput(initialDate);
+  const title = useFormInput(initialTitle);
+  const content = useFormInput(initialContent);
+  const emotion = useFormInput(initialEmotion);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -25,8 +33,7 @@ function DiaryEdior() {
       score: parseInt(emotion.value),
     };
     try {
-      const data = await writeDiary(diaryForm);
-      console.log(data);
+      const data = isEdit ? await updateDiary(diaryForm, id) : await writeDiary(diaryForm);
       navigate(`/diary/${data.id}`, { replace: true });
     } catch (error) {
       alert(error.response.data.message);
@@ -52,7 +59,7 @@ function DiaryEdior() {
         <TextArea {...content} required />
       </FieldBox>
       <Button type="submit" height="3rem">
-        등록하기
+        {isEdit ? '수정하기' : '등록하기'}
       </Button>
     </FormBox>
   );
